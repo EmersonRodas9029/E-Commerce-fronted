@@ -78,25 +78,25 @@ export default function Productos() {
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 p-8">
-      <h1 className="text-xl font-semibold text-gray-900">Productos</h1>
+      <h1 className="text-xl font-semibold text-perla-900">Productos</h1>
 
       {error && <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
 
       {puedeEscribir && (
-        <form onSubmit={handleCrear} className="space-y-3 rounded-lg border border-gray-200 bg-white p-4">
+        <form onSubmit={handleCrear} className="space-y-3 rounded-lg border border-perla-200 bg-white p-4">
           <div className="grid grid-cols-2 gap-3">
             <input
               placeholder="Nombre"
               required
               value={form.nombre}
               onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-              className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+              className="rounded-md border border-perla-300 px-3 py-2 text-sm"
             />
             <select
               required
               value={form.categoriaId}
               onChange={(e) => setForm({ ...form, categoriaId: e.target.value })}
-              className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+              className="rounded-md border border-perla-300 px-3 py-2 text-sm"
             >
               <option value="">Categoría…</option>
               {categorias.map((c) => (
@@ -108,7 +108,7 @@ export default function Productos() {
             <select
               value={form.tipo}
               onChange={(e) => setForm({ ...form, tipo: e.target.value as TipoProducto })}
-              className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+              className="rounded-md border border-perla-300 px-3 py-2 text-sm"
             >
               <option value="no_perecedero">No perecedero</option>
               <option value="perecedero">Perecedero</option>
@@ -117,7 +117,7 @@ export default function Productos() {
               placeholder="Descripción (opcional)"
               value={form.descripcion}
               onChange={(e) => setForm({ ...form, descripcion: e.target.value })}
-              className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+              className="rounded-md border border-perla-300 px-3 py-2 text-sm"
             />
             {form.tipo === 'perecedero' && (
               <>
@@ -128,9 +128,9 @@ export default function Productos() {
                   required
                   value={form.diasVidaUtil}
                   onChange={(e) => setForm({ ...form, diasVidaUtil: e.target.value })}
-                  className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+                  className="rounded-md border border-perla-300 px-3 py-2 text-sm"
                 />
-                <label className="flex items-center gap-2 text-sm text-gray-700">
+                <label className="flex items-center gap-2 text-sm text-perla-700">
                   <input
                     type="checkbox"
                     checked={form.requiereRefrigeracion}
@@ -144,7 +144,7 @@ export default function Productos() {
           <button
             type="submit"
             disabled={guardando}
-            className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-50"
+            className="rounded-md bg-vino-600 px-3 py-2 text-sm font-medium text-white hover:bg-vino-700 disabled:opacity-50"
           >
             {guardando ? 'Guardando…' : 'Agregar producto'}
           </button>
@@ -153,7 +153,7 @@ export default function Productos() {
 
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-gray-200 text-left text-gray-500">
+          <tr className="border-b border-perla-200 text-left text-perla-500">
             <th className="py-2">Nombre</th>
             <th className="py-2">Categoría</th>
             <th className="py-2">Tipo</th>
@@ -162,7 +162,7 @@ export default function Productos() {
         </thead>
         <tbody>
           {productos.map((p) => (
-            <tr key={p.id} className="border-b border-gray-100">
+            <tr key={p.id} className="border-b border-perla-100">
               <td className="py-2">{p.nombre}</td>
               <td className="py-2">{p.categoria.nombre}</td>
               <td className="py-2">{p.tipo === 'perecedero' ? 'Perecedero' : 'No perecedero'}</td>

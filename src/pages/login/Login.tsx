@@ -21,9 +21,10 @@ export default function Login() {
       login(data.usuario, data.accessToken);
       navigate('/dashboard');
     } catch (err) {
-      const mensaje = isAxiosError(err)
-        ? (err.response?.data?.message ?? 'Credenciales inválidas')
-        : 'No se pudo conectar con el servidor';
+      const mensaje =
+        isAxiosError(err) && err.response
+          ? (err.response.data?.message ?? 'Credenciales inválidas')
+          : 'No se pudo conectar con el servidor';
       setError(mensaje);
     } finally {
       setCargando(false);
@@ -31,12 +32,12 @@ export default function Login() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
+    <div className="flex min-h-screen items-center justify-center bg-perla-50">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-sm space-y-4 rounded-lg border border-gray-200 bg-white p-8 shadow-sm"
+        className="w-full max-w-sm space-y-4 rounded-lg border border-perla-200 bg-white p-8 shadow-sm"
       >
-        <h1 className="text-xl font-semibold text-gray-900">Iniciar sesión</h1>
+        <h1 className="text-xl font-semibold text-perla-900">Iniciar sesión</h1>
 
         {error && (
           <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">
@@ -45,7 +46,7 @@ export default function Login() {
         )}
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="email" className="block text-sm font-medium text-perla-700">
             Email
           </label>
           <input
@@ -54,12 +55,12 @@ export default function Login() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-gray-500 focus:outline-none"
+            className="mt-1 w-full rounded-md border border-perla-300 px-3 py-2 text-sm focus:border-perla-500 focus:outline-none"
           />
         </div>
 
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="password" className="block text-sm font-medium text-perla-700">
             Contraseña
           </label>
           <input
@@ -68,14 +69,14 @@ export default function Login() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-gray-500 focus:outline-none"
+            className="mt-1 w-full rounded-md border border-perla-300 px-3 py-2 text-sm focus:border-perla-500 focus:outline-none"
           />
         </div>
 
         <button
           type="submit"
           disabled={cargando}
-          className="w-full rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-50"
+          className="w-full rounded-md bg-vino-600 px-3 py-2 text-sm font-medium text-white hover:bg-vino-700 disabled:opacity-50"
         >
           {cargando ? 'Ingresando…' : 'Ingresar'}
         </button>

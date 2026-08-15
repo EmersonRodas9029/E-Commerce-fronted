@@ -21,17 +21,17 @@ export default function Alertas() {
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 p-8">
-      <h1 className="text-xl font-semibold text-gray-900">Alertas</h1>
+      <h1 className="text-xl font-semibold text-perla-900">Alertas</h1>
 
       {error && <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
 
       <section className="space-y-2">
-        <h2 className="text-sm font-medium text-gray-700">Stock bajo</h2>
+        <h2 className="text-sm font-medium text-perla-700">Stock bajo</h2>
         {stockBajo.length === 0 ? (
-          <p className="text-sm text-gray-500">Sin alertas de stock.</p>
+          <p className="text-sm text-perla-500">Sin alertas de stock.</p>
         ) : (
-          <table className="w-full rounded-lg border border-gray-200 bg-white text-sm">
-            <thead className="bg-gray-50 text-left text-gray-500">
+          <table className="w-full rounded-lg border border-perla-200 bg-white text-sm">
+            <thead className="bg-perla-50 text-left text-perla-500">
               <tr>
                 <th className="px-3 py-2">Producto</th>
                 <th className="px-3 py-2">Variante</th>
@@ -41,7 +41,7 @@ export default function Alertas() {
             </thead>
             <tbody>
               {stockBajo.map((v) => (
-                <tr key={v.id} className="border-t border-gray-100">
+                <tr key={v.id} className="border-t border-perla-100">
                   <td className="px-3 py-2">{v.producto.nombre}</td>
                   <td className="px-3 py-2">{v.nombre}</td>
                   <td className="px-3 py-2 text-red-700">{v.stockActual}</td>
@@ -54,12 +54,12 @@ export default function Alertas() {
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-sm font-medium text-gray-700">Vencimiento próximo (7 días)</h2>
+        <h2 className="text-sm font-medium text-perla-700">Vencimiento próximo (7 días)</h2>
         {vencimientos.length === 0 ? (
-          <p className="text-sm text-gray-500">Sin lotes por vencer.</p>
+          <p className="text-sm text-perla-500">Sin lotes por vencer.</p>
         ) : (
-          <table className="w-full rounded-lg border border-gray-200 bg-white text-sm">
-            <thead className="bg-gray-50 text-left text-gray-500">
+          <table className="w-full rounded-lg border border-perla-200 bg-white text-sm">
+            <thead className="bg-perla-50 text-left text-perla-500">
               <tr>
                 <th className="px-3 py-2">Producto</th>
                 <th className="px-3 py-2">Variante</th>
@@ -69,7 +69,7 @@ export default function Alertas() {
             </thead>
             <tbody>
               {vencimientos.map((l) => (
-                <tr key={l.id} className="border-t border-gray-100">
+                <tr key={l.id} className="border-t border-perla-100">
                   <td className="px-3 py-2">{l.variante.producto.nombre}</td>
                   <td className="px-3 py-2">{l.variante.nombre}</td>
                   <td className="px-3 py-2">{l.cantidad}</td>

@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+@theme {
+  /* Gris Perla Cálido — 60%, superficies y texto neutro */
+  --color-perla-50: #faf8f7;
+  --color-perla-100: #f4f1f0;
+  --color-perla-200: #e8e3e1;
+  --color-perla-300: #d4cdcc;
+  --color-perla-400: #a89e9b;
+  --color-perla-500: #7d716d;
+  --color-perla-600: #5c524f;
+  --color-perla-700: #423a38;
+  --color-perla-800: #2b2523;
+  --color-perla-900: #1c1817;
+
+  /* Vino Tinto Profundo — 30%, acciones primarias */
+  --color-vino-500: #6a1b2a;
+  --color-vino-600: #5a1723;
+  --color-vino-700: #47121c;
+}

@@ -98,14 +98,14 @@ export default function Inventario() {
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 p-8">
-      <h1 className="text-xl font-semibold text-gray-900">Inventario</h1>
+      <h1 className="text-xl font-semibold text-perla-900">Inventario</h1>
 
       {error && <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
 
       <select
         value={productoId}
         onChange={(e) => setProductoId(e.target.value)}
-        className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+        className="rounded-md border border-perla-300 px-3 py-2 text-sm"
       >
         <option value="">Producto…</option>
         {productos.map((p) => (
@@ -118,7 +118,7 @@ export default function Inventario() {
       {producto && (
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-gray-200 text-left text-gray-500">
+            <tr className="border-b border-perla-200 text-left text-perla-500">
               <th className="py-2">Variante</th>
               <th className="py-2">Precio</th>
               <th className="py-2">Stock</th>
@@ -130,7 +130,7 @@ export default function Inventario() {
               <tr
                 key={v.id}
                 onClick={() => cargarVariante(v.id)}
-                className={`cursor-pointer border-b border-gray-100 hover:bg-gray-50 ${v.id === varianteId ? 'bg-gray-50' : ''}`}
+                className={`cursor-pointer border-b border-perla-100 hover:bg-perla-50 ${v.id === varianteId ? 'bg-perla-50' : ''}`}
               >
                 <td className="py-2">{v.nombre}</td>
                 <td className="py-2">{v.precio}</td>
@@ -145,15 +145,15 @@ export default function Inventario() {
       )}
 
       {variante && (
-        <div className="space-y-6 rounded-lg border border-gray-200 p-4">
-          <h2 className="text-sm font-semibold text-gray-900">{variante.nombre}</h2>
+        <div className="space-y-6 rounded-lg border border-perla-200 p-4">
+          <h2 className="text-sm font-semibold text-perla-900">{variante.nombre}</h2>
 
           {puedeEscribir && (
             <form onSubmit={handleMovimiento} className="flex flex-wrap items-end gap-2">
               <select
                 value={movForm.tipo}
                 onChange={(e) => setMovForm({ ...movForm, tipo: e.target.value as TipoMovimiento })}
-                className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+                className="rounded-md border border-perla-300 px-3 py-2 text-sm"
               >
                 <option value="compra">Compra</option>
                 <option value="venta">Venta</option>
@@ -167,13 +167,13 @@ export default function Inventario() {
                 placeholder="Cantidad (± según tipo)"
                 value={movForm.cantidad}
                 onChange={(e) => setMovForm({ ...movForm, cantidad: e.target.value })}
-                className="w-44 rounded-md border border-gray-300 px-3 py-2 text-sm"
+                className="w-44 rounded-md border border-perla-300 px-3 py-2 text-sm"
               />
               {lotes.length > 0 && (
                 <select
                   value={movForm.loteId}
                   onChange={(e) => setMovForm({ ...movForm, loteId: e.target.value })}
-                  className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+                  className="rounded-md border border-perla-300 px-3 py-2 text-sm"
                 >
                   <option value="">Sin lote</option>
                   {lotes.map((l) => (
@@ -187,11 +187,11 @@ export default function Inventario() {
                 placeholder="Referencia (opcional)"
                 value={movForm.referencia}
                 onChange={(e) => setMovForm({ ...movForm, referencia: e.target.value })}
-                className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+                className="rounded-md border border-perla-300 px-3 py-2 text-sm"
               />
               <button
                 type="submit"
-                className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white hover:bg-gray-800"
+                className="rounded-md bg-vino-600 px-3 py-2 text-sm font-medium text-white hover:bg-vino-700"
               >
                 Registrar
               </button>
@@ -200,7 +200,7 @@ export default function Inventario() {
 
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-gray-200 text-left text-gray-500">
+              <tr className="border-b border-perla-200 text-left text-perla-500">
                 <th className="py-2">Fecha</th>
                 <th className="py-2">Tipo</th>
                 <th className="py-2">Cantidad</th>
@@ -209,7 +209,7 @@ export default function Inventario() {
             </thead>
             <tbody>
               {movimientos.map((m) => (
-                <tr key={m.id} className="border-b border-gray-100">
+                <tr key={m.id} className="border-b border-perla-100">
                   <td className="py-2">{new Date(m.createdAt).toLocaleDateString()}</td>
                   <td className="py-2 capitalize">{m.tipo}</td>
                   <td className={`py-2 ${m.cantidad < 0 ? 'text-red-600' : 'text-green-700'}`}>{m.cantidad}</td>
@@ -220,8 +220,8 @@ export default function Inventario() {
           </table>
 
           {producto?.tipo === 'perecedero' && (
-            <div className="space-y-3 border-t border-gray-100 pt-4">
-              <h3 className="text-sm font-semibold text-gray-900">Lotes</h3>
+            <div className="space-y-3 border-t border-perla-100 pt-4">
+              <h3 className="text-sm font-semibold text-perla-900">Lotes</h3>
 
               {puedeEscribir && (
                 <form onSubmit={handleLote} className="flex flex-wrap items-end gap-2">
@@ -232,18 +232,18 @@ export default function Inventario() {
                     placeholder="Cantidad"
                     value={loteForm.cantidad}
                     onChange={(e) => setLoteForm({ ...loteForm, cantidad: e.target.value })}
-                    className="w-28 rounded-md border border-gray-300 px-3 py-2 text-sm"
+                    className="w-28 rounded-md border border-perla-300 px-3 py-2 text-sm"
                   />
                   <input
                     type="date"
                     required
                     value={loteForm.fechaVencimiento}
                     onChange={(e) => setLoteForm({ ...loteForm, fechaVencimiento: e.target.value })}
-                    className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+                    className="rounded-md border border-perla-300 px-3 py-2 text-sm"
                   />
                   <button
                     type="submit"
-                    className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white hover:bg-gray-800"
+                    className="rounded-md bg-vino-600 px-3 py-2 text-sm font-medium text-white hover:bg-vino-700"
                   >
                     Agregar lote
                   </button>
@@ -252,7 +252,7 @@ export default function Inventario() {
 
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-gray-200 text-left text-gray-500">
+                  <tr className="border-b border-perla-200 text-left text-perla-500">
                     <th className="py-2">Cantidad</th>
                     <th className="py-2">Vencimiento</th>
                     <th className="py-2">Estado</th>
@@ -261,7 +261,7 @@ export default function Inventario() {
                 </thead>
                 <tbody>
                   {lotes.map((l) => (
-                    <tr key={l.id} className="border-b border-gray-100">
+                    <tr key={l.id} className="border-b border-perla-100">
                       <td className="py-2">{l.cantidad}</td>
                       <td className="py-2">{l.fechaVencimiento}</td>
                       <td className="py-2">{l.dadoDeBaja ? 'Dado de baja' : 'Activo'}</td>

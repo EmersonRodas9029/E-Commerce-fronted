@@ -75,45 +75,45 @@ export default function Dashboard() {
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 p-8">
-      <h1 className="text-xl font-semibold text-gray-900">Dashboard</h1>
+      <h1 className="text-xl font-semibold text-perla-900">Dashboard</h1>
 
-      <section className="space-y-3 rounded-lg border border-gray-200 bg-white p-4">
-        <h2 className="text-sm font-medium text-gray-700">Demanda estimada (ML)</h2>
+      <section className="space-y-3 rounded-lg border border-perla-200 bg-white p-4">
+        <h2 className="text-sm font-medium text-perla-700">Demanda estimada (ML)</h2>
         <form onSubmit={handleForecast} className="flex items-end gap-3">
-          <label className="text-sm text-gray-600">
+          <label className="text-sm text-perla-600">
             Variante ID
             <input
               type="number"
               required
               value={varianteId}
               onChange={(e) => setVarianteId(e.target.value)}
-              className="mt-1 block w-32 rounded-md border border-gray-300 px-3 py-2 text-sm"
+              className="mt-1 block w-32 rounded-md border border-perla-300 px-3 py-2 text-sm"
             />
           </label>
-          <label className="text-sm text-gray-600">
+          <label className="text-sm text-perla-600">
             Días
             <input
               type="number"
               min={1}
               value={dias}
               onChange={(e) => setDias(e.target.value)}
-              className="mt-1 block w-24 rounded-md border border-gray-300 px-3 py-2 text-sm"
+              className="mt-1 block w-24 rounded-md border border-perla-300 px-3 py-2 text-sm"
             />
           </label>
-          <button type="submit" className="rounded-md bg-gray-900 px-4 py-2 text-sm text-white">
+          <button type="submit" className="rounded-md bg-vino-600 px-4 py-2 text-sm text-white">
             Consultar
           </button>
         </form>
         {forecastError && <p className="text-sm text-red-700">{forecastError}</p>}
         {forecast && (
           <>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-perla-700">
               Demanda estimada para los próximos {forecast.dias} día(s):{' '}
               <span className="font-semibold">{forecast.demanda_estimada}</span> unidades.
             </p>
             <div>
               <Sparkline historico={forecast.historico} />
-              <div className="flex justify-between text-xs text-gray-400">
+              <div className="flex justify-between text-xs text-perla-400">
                 <span>{forecast.historico.at(0)?.fecha}</span>
                 <span>Ventas diarias, últimos {forecast.historico.length} días</span>
                 <span>{forecast.historico.at(-1)?.fecha}</span>
@@ -123,26 +123,26 @@ export default function Dashboard() {
         )}
       </section>
 
-      <section className="space-y-3 rounded-lg border border-gray-200 bg-white p-4">
-        <h2 className="text-sm font-medium text-gray-700">Detección de anomalías (ML)</h2>
+      <section className="space-y-3 rounded-lg border border-perla-200 bg-white p-4">
+        <h2 className="text-sm font-medium text-perla-700">Detección de anomalías (ML)</h2>
         <form onSubmit={handleAnomalia} className="flex items-end gap-3">
-          <label className="text-sm text-gray-600">
+          <label className="text-sm text-perla-600">
             Venta ID
             <input
               type="number"
               required
               value={ventaId}
               onChange={(e) => setVentaId(e.target.value)}
-              className="mt-1 block w-32 rounded-md border border-gray-300 px-3 py-2 text-sm"
+              className="mt-1 block w-32 rounded-md border border-perla-300 px-3 py-2 text-sm"
             />
           </label>
-          <button type="submit" className="rounded-md bg-gray-900 px-4 py-2 text-sm text-white">
+          <button type="submit" className="rounded-md bg-vino-600 px-4 py-2 text-sm text-white">
             Consultar
           </button>
         </form>
         {anomaliaError && <p className="text-sm text-red-700">{anomaliaError}</p>}
         {anomalia && (
-          <p className={`text-sm ${anomalia.es_anomalia ? 'text-red-700' : 'text-gray-700'}`}>
+          <p className={`text-sm ${anomalia.es_anomalia ? 'text-red-700' : 'text-perla-700'}`}>
             {anomalia.es_anomalia ? 'Venta marcada como anómala' : 'Venta dentro de lo esperado'} (score:{' '}
             {anomalia.score.toFixed(3)})
           </p>

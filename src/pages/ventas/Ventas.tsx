@@ -101,7 +101,7 @@ export default function Ventas() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-6 p-8">
-      <h1 className="text-xl font-semibold text-gray-900">Venta</h1>
+      <h1 className="text-xl font-semibold text-perla-900">Venta</h1>
 
       {error && <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
       {ultimaVenta && (
@@ -116,19 +116,19 @@ export default function Ventas() {
           placeholder="Escanear o escribir código…"
           value={codigo}
           onChange={(e) => setCodigo(e.target.value)}
-          className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm"
+          className="flex-1 rounded-md border border-perla-300 px-3 py-2 text-sm"
         />
-        <button type="submit" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white hover:bg-gray-800">
+        <button type="submit" className="rounded-md bg-vino-600 px-3 py-2 text-sm font-medium text-white hover:bg-vino-700">
           Agregar
         </button>
       </form>
 
-      <form onSubmit={handleAgregarLibre} className="flex flex-wrap items-end gap-2 text-sm text-gray-600">
+      <form onSubmit={handleAgregarLibre} className="flex flex-wrap items-end gap-2 text-sm text-perla-600">
         <input
           placeholder="Producto libre (sin código)"
           value={libre.descripcion}
           onChange={(e) => setLibre({ ...libre, descripcion: e.target.value })}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+          className="rounded-md border border-perla-300 px-3 py-2 text-sm"
         />
         <input
           type="number"
@@ -138,19 +138,19 @@ export default function Ventas() {
           required={!!libre.descripcion}
           value={libre.precio}
           onChange={(e) => setLibre({ ...libre, precio: e.target.value })}
-          className="w-24 rounded-md border border-gray-300 px-3 py-2 text-sm"
+          className="w-24 rounded-md border border-perla-300 px-3 py-2 text-sm"
         />
         <input
           type="number"
           min={1}
           value={libre.cantidad}
           onChange={(e) => setLibre({ ...libre, cantidad: e.target.value })}
-          className="w-16 rounded-md border border-gray-300 px-3 py-2 text-sm"
+          className="w-16 rounded-md border border-perla-300 px-3 py-2 text-sm"
         />
         <button
           type="submit"
           disabled={!libre.descripcion || !libre.precio}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm hover:bg-gray-50 disabled:opacity-50"
+          className="rounded-md border border-perla-300 px-3 py-2 text-sm hover:bg-perla-50 disabled:opacity-50"
         >
           Agregar libre
         </button>
@@ -158,7 +158,7 @@ export default function Ventas() {
 
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-gray-200 text-left text-gray-500">
+          <tr className="border-b border-perla-200 text-left text-perla-500">
             <th className="py-2">Producto</th>
             <th className="py-2">Precio</th>
             <th className="py-2">Cant.</th>
@@ -168,15 +168,15 @@ export default function Ventas() {
         </thead>
         <tbody>
           {carrito.map((l, i) => (
-            <tr key={i} className="border-b border-gray-100">
+            <tr key={i} className="border-b border-perla-100">
               <td className="py-2">{l.nombre}</td>
               <td className="py-2">${l.precioUnitario.toFixed(2)}</td>
               <td className="py-2">
-                <button onClick={() => cambiarCantidad(i, -1)} className="px-1 text-gray-500">
+                <button onClick={() => cambiarCantidad(i, -1)} className="px-1 text-perla-500">
                   −
                 </button>
                 {l.cantidad}
-                <button onClick={() => cambiarCantidad(i, 1)} className="px-1 text-gray-500">
+                <button onClick={() => cambiarCantidad(i, 1)} className="px-1 text-perla-500">
                   +
                 </button>
               </td>
@@ -191,12 +191,12 @@ export default function Ventas() {
         </tbody>
       </table>
 
-      <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-        <span className="text-lg font-semibold text-gray-900">Total: ${total.toFixed(2)}</span>
+      <div className="flex items-center justify-between border-t border-perla-200 pt-4">
+        <span className="text-lg font-semibold text-perla-900">Total: ${total.toFixed(2)}</span>
         <select
           value={metodoPago}
           onChange={(e) => setMetodoPago(e.target.value as MetodoPago)}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm"
+          className="rounded-md border border-perla-300 px-3 py-2 text-sm"
         >
           <option value="efectivo">Efectivo</option>
           <option value="tarjeta">Tarjeta</option>
@@ -205,7 +205,7 @@ export default function Ventas() {
         <button
           onClick={handleCobrar}
           disabled={carrito.length === 0 || cobrando}
-          className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 disabled:opacity-50"
+          className="rounded-md bg-vino-600 px-4 py-2 text-sm font-medium text-white hover:bg-vino-700 disabled:opacity-50"
         >
           {cobrando ? 'Cobrando…' : 'Cobrar'}
         </button>
